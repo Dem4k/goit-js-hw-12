@@ -14,12 +14,33 @@
   display: flex;
   flex-wrap: wrap;
   gap: 30px;
+  margin-bottom: 30px;
 }
 
 .gallery-item {
-  flex-basis: calc((100% - 60px) / 3);
+  flex-basis: calc((100% - 66px) / 3);
+  height: 300px;
+  border: 1px solid black;
+  img {
+    height: 245px;
+    object-fit: cover;
+    width: 100%;
+  }
 }
 
+.thumb {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+.thumb-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
 .loader {
   width: 48px;
   height: 48px;
@@ -31,6 +52,7 @@
   position: relative;
   box-sizing: border-box;
   animation: rotation 1s linear infinite;
+  margin: 0 auto;
 }
 .loader::after {
   content: '';
@@ -50,4 +72,14 @@
   100% {
     transform: rotate(360deg);
   }
+}
+
+.load-more {
+  background: #4e75ff;
+  border-radius: 8px;
+  border: transparent;
+  color: white;
+  padding: 8px 16px;
+  display: none;
+  margin: 0 auto;
 }
