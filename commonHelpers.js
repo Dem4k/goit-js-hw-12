@@ -1,0 +1,11 @@
+import{S as p,i as s}from"./assets/vendor-5ObWk2rO.js";(function(){const r=document.createElement("link").relList;if(r&&r.supports&&r.supports("modulepreload"))return;for(const e of document.querySelectorAll('link[rel="modulepreload"]'))i(e);new MutationObserver(e=>{for(const t of e)if(t.type==="childList")for(const a of t.addedNodes)a.tagName==="LINK"&&a.rel==="modulepreload"&&i(a)}).observe(document,{childList:!0,subtree:!0});function o(e){const t={};return e.integrity&&(t.integrity=e.integrity),e.referrerPolicy&&(t.referrerPolicy=e.referrerPolicy),e.crossOrigin==="use-credentials"?t.credentials="include":e.crossOrigin==="anonymous"?t.credentials="omit":t.credentials="same-origin",t}function i(e){if(e.ep)return;e.ep=!0;const t=o(e);fetch(e.href,t)}})();function h(n){const r="https://pixabay.com/api/",o="44400014-e8ce3fc6f032fabdec0605d2e",i=new URLSearchParams({key:o,q:n,image_type:"photo",orientation:"horizontal",safesearch:!0}),e=`${r}?${i}`;return fetch(e).then(t=>{if(!t.ok)throw new Error(t.status);return t.json()})}const l=document.querySelector(".gallery"),u=document.querySelector(".loader");function g(n){const r=n.map(({webformatURL:o,largeImageURL:i,likes:e,comments:t,downloads:a,views:m,tags:d})=>`<li class="gallery-item">
+      <a href="${i}"><img src="${o}" alt="${d}" />
+          <div>
+            <p>Likes ${e}</p>
+            <p>Views ${m}</p>
+            <p>Comments ${t}</p>
+            <p>Downloads ${a}</p>
+          </div></a>
+        </li>
+  `).join("");l.insertAdjacentHTML("beforeend",r)}function y(){l.innerHTML=""}function L(){u.style.display="inline-block"}function c(){u.style.display="none"}const f=document.querySelector(".search-form"),S=new p(".gallery a",{captionsData:"alt",captionDelay:250});f.addEventListener("submit",b);function b(n){n.preventDefault();const r=f.elements.searchValue.value.trim();if(y(),r===""){s.warning({position:"topRight",title:"Caution",message:"Please enter a search query"});return}L(),setTimeout(()=>{h(r).then(({hits:o})=>{if(c(),o.length===0){s.error({position:"topRight",title:"Caution",message:"Sorry, there are no images matching your search query. Please try again!"});return}g(o),S.refresh()}).catch(o=>{c(),s.error({position:"topRight",title:"Caution",message:"Sorry something wrong! Try again later"}),console.log(o)})},1e3)}
+//# sourceMappingURL=commonHelpers.js.map
